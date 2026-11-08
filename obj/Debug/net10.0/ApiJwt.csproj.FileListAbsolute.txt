@@ -32,3 +32,4 @@ C:\Users\geral\OneDrive\Área de Trabalho\ApiJwt\obj\Debug\net10.0\refint\ApiJwt
 C:\Users\geral\OneDrive\Área de Trabalho\ApiJwt\obj\Debug\net10.0\ApiJwt.pdb
 C:\Users\geral\OneDrive\Área de Trabalho\ApiJwt\obj\Debug\net10.0\ApiJwt.genruntimeconfig.cache
 C:\Users\geral\OneDrive\Área de Trabalho\ApiJwt\obj\Debug\net10.0\ref\ApiJwt.dll
+C:\Users\geral\OneDrive\Área de Trabalho\ApiJwt\obj\Debug\net10.0\ApiJwt.sourcelink.json
