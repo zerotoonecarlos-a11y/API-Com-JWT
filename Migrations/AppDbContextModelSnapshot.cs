@@ -17,37 +17,50 @@ namespace ApiJwt.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
 
-            modelBuilder.Entity("ApiJwt.Models.Tarefas", b =>
+            modelBuilder.Entity("ApiJwt.Models.Tarefa", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Concluida")
-                        .HasColumnType("INTEGER");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER")
+                        .HasDefaultValue(false);
 
-                    b.Property<DateTime>("DataVencimeto")
+                    b.Property<DateTime>("DataVencimento")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
+                        .HasMaxLength(120)
                         .HasColumnType("TEXT");
 
-                    b.Property<long>("UsarioId")
+                    b.Property<long>("UsuarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long?>("UsuarioId1")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UsarioId");
+                    b.HasIndex("UsuarioId");
 
-                    b.ToTable("Tarefas");
+                    b.HasIndex("UsuarioId1");
+
+                    b.ToTable("Tarefa", t =>
+                        {
+                            t.HasCheckConstraint("CK_Tarefa_Descricao", "\"Descricao\" IS NULL OR length(\"Descricao\") <= 1000");
+
+                            t.HasCheckConstraint("CK_Tarefa_Titulo", "length(trim(\"Titulo\")) BETWEEN 1 AND 120");
+                        });
                 });
 
-            modelBuilder.Entity("ApiJwt.Models.Usario", b =>
+            modelBuilder.Entity("ApiJwt.Models.Usuario", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,33 +68,47 @@ namespace ApiJwt.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Nome")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SenhaHash")
                         .IsRequired()
+                        .HasMaxLength(255)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuarios", t =>
+                        {
+                            t.HasCheckConstraint("CK_Usuario_Email", "length(trim(\"Email\")) BETWEEN 1 AND 100");
+
+                            t.HasCheckConstraint("CK_Usuario_Nome", "length(trim(\"Nome\")) BETWEEN 1 AND 100");
+
+                            t.HasCheckConstraint("CK_Usuario_SenhaHash", "length(trim(\"SenhaHash\")) BETWEEN 1 AND 255");
+                        });
                 });
 
-            modelBuilder.Entity("ApiJwt.Models.Tarefas", b =>
+            modelBuilder.Entity("ApiJwt.Models.Tarefa", b =>
                 {
-                    b.HasOne("ApiJwt.Models.Usario", "Usario")
-                        .WithMany("Tarefas")
-                        .HasForeignKey("UsarioId")
+                    b.HasOne("ApiJwt.Models.Usuario", "Usuario")
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Usario");
+                    b.HasOne("ApiJwt.Models.Usuario", null)
+                        .WithMany("Tarefas")
+                        .HasForeignKey("UsuarioId1");
+
+                    b.Navigation("Usuario");
                 });
 
-            modelBuilder.Entity("ApiJwt.Models.Usario", b =>
+            modelBuilder.Entity("ApiJwt.Models.Usuario", b =>
                 {
                     b.Navigation("Tarefas");
                 });
