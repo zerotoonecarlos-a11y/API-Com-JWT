@@ -2,7 +2,7 @@ using System;
 
 namespace ApiJwt.Models;
 
-public class Tarefas
+public class Tarefa
 {
     public int Id { get; set; }
     public string Titulo { get; set; } = string.Empty;
@@ -10,6 +10,6 @@ public class Tarefas
     public bool Concluida { get; set; }
     public DateTime DataVencimeto {get; set;}
 
-    public long UsarioId { get; set; }
-    public Usario Usario { get; set; } = null;
+    public long UsuarioId { get; set; }
+    public Usuario? Usuario  { get; set; } = null;
 }

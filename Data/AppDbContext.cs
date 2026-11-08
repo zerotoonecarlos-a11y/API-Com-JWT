@@ -10,6 +10,6 @@ public class AppDbContext : DbContext
         
     }
 
-    public DbSet<Usario> Usuarios { get; set; }
-    public DbSet<Tarefas> Tarefas { get; set; }
+    public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Tarefa> Tarefa { get; set; }
 }
