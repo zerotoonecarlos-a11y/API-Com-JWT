@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "mL8vY9xcS68=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\geral\\OneDrive\\Área de Trabalho\\ApiJwt\\ApiJwt.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\geral\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.14\\microsoft.aspnetcore.openapi.10.0.14.nupkg.sha512",
+    "C:\\Users\\geral\\.nuget\\packages\\microsoft.openapi\\2.12.2\\microsoft.openapi.2.12.2.nupkg.sha512",
+    "C:\\Users\\geral\\.nuget\\packages\\scalar.aspnetcore\\2.19.0\\scalar.aspnetcore.2.19.0.nupkg.sha512"
+  ],
+  "logs": []
+}
