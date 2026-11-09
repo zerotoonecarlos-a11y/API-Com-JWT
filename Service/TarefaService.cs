@@ -17,7 +17,7 @@ public class TarefaService : ITarefaService
         _logger = logger;
     }
 
-    public async Task<List<Tarefa>> GetAllTarefasAsync(int usuarioId)
+    public async Task<List<Tarefa>> GetAllTarefasAsync(long usuarioId)
     {
         try
         {
@@ -46,10 +46,8 @@ public class TarefaService : ITarefaService
 
     }
 
-    public async Task<Tarefa?> GetTarefaByIdAsync(int id, int usuarioId)
+    public async Task<Tarefa?> GetTarefaByIdAsync(long id, long usuarioId)
     {
-
-
         try
         {
             _logger.LogInformation(
@@ -152,7 +150,7 @@ public class TarefaService : ITarefaService
         }
     }
 
-    public async Task<bool> DeleteTarefaAsync(int id, int usuarioId)
+    public async Task<bool> DeleteTarefaAsync(long id, long usuarioId)
     {
         try
         {

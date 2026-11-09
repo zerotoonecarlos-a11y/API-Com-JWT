@@ -21,7 +21,7 @@ public class AuthService : IAuthService
     {
         var usuario = await _usuarioService.GetUsuarioByEmailAsync(email);
 
-        if (usuario == null || usuario.SenhaHash != senha)
+        if (usuario == null || usuario.Senha != senha)
         {
             _logger.LogWarning("Falha na validação de login para o email: {Email}", email);
             throw new UnauthorizedAccessException("Credenciais inválidas.");

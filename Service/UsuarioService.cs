@@ -54,6 +54,45 @@ public class UsuarioService : IUsuarioService
         }
     }
 
+    public async Task<Usuario?> GetUsuarioByEmailAsync(string email)
+    {
+        try
+        {
+            _logger.LogInformation(
+                "Iniciando busca de usuário pelo email {Email}",
+                email
+            );
+
+            var usuario = await _context.Usuario.FirstOrDefaultAsync(u => u.Email == email);
+
+            if (usuario == null)
+            {
+                _logger.LogWarning(
+                    "Usuário com email {Email} não encontrado",
+                    email
+                );
+            }
+            else
+            {
+                _logger.LogInformation(
+                    "Busca de usuário pelo email {Email} concluída com sucesso",
+                    email
+                );
+            }
+
+            return usuario;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(
+                ex,
+                "Erro ao buscar usuário pelo email {Email}",
+                email
+            );
+            throw;
+        }
+    }
+
     public async Task<bool> DeleteUsuarioAsync(long usuarioId)
     {
         try

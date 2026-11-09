@@ -9,6 +9,6 @@ public interface ITarefaService
      Task<Tarefa?> GetTarefaByIdAsync(long id, long usuarioId);
      Task<Tarefa> CreateTarefaAsync(Tarefa tarefa);
      Task<Tarefa> UpdateTarefaAsync(Tarefa tarefa);
-     Task<bool> DeleteTarefaAsync(int id, int usuarioId);
+     Task<bool> DeleteTarefaAsync(long id, long usuarioId);
 
 }
