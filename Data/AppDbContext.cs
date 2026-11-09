@@ -11,7 +11,7 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Usuario> Usuarios { get; set; }
+    public DbSet<Usuario> Usuario { get; set; }
     public DbSet<Tarefa> Tarefa { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ public class AppDbContext : DbContext
                 );
 
                 table.HasCheckConstraint(
-                    "CK_Usuario_SenhaHash",
-                    "length(trim(\"SenhaHash\")) BETWEEN 1 AND 255"
+                    "CK_Usuario_Senha",
+                    "length(trim(\"Senha\")) BETWEEN 1 AND 255"
                 );
             });
 
@@ -48,7 +48,7 @@ public class AppDbContext : DbContext
                 .IsRequired()
                 .HasMaxLength(100);
 
-            entity.Property(u => u.SenhaHash)
+            entity.Property(u => u.Senha)
                 .IsRequired()
                 .HasMaxLength(255);
         });

@@ -5,8 +5,8 @@ namespace ApiJwt.Interface;
 
 public interface ITarefaService
 {
-     Task<List<Tarefa>> GetAllTarefasAsync(int usuarioId);
-     Task<Tarefa?> GetTarefaByIdAsync(int id, int usuarioId);
+     Task<List<Tarefa>> GetAllTarefasAsync(long usuarioId);
+     Task<Tarefa?> GetTarefaByIdAsync(long id, long usuarioId);
      Task<Tarefa> CreateTarefaAsync(Tarefa tarefa);
      Task<Tarefa> UpdateTarefaAsync(Tarefa tarefa);
      Task<bool> DeleteTarefaAsync(int id, int usuarioId);
